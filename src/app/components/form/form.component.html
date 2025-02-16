@@ -1,0 +1,66 @@
+<div class="container">
+    <div class="button-container">
+      <button type="button" (click)="goBack()" class="btn btn-secondary">
+        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-x-circle-fill" viewBox="0 0 16 16">
+          <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293z"/>
+        </svg>
+      </button>
+    </div>
+    <form (ngSubmit)="submitForm()" #mainForm="ngForm">
+      <div class="form-row">
+        <div class="form-group col-md-4">
+          <label for="vertical">Vertical</label>
+          <select id="vertical" class="form-control" [(ngModel)]="vertical"  name="vertical" required>
+            <option value="" disabled selected>Selecciona una vertical</option>
+            <option value="ADMISION Y GESTION ANTICIPATIVA PARA DISMINUIR ENTRADAS EN ATRASO">ADMISION Y GESTION ANTICIPATIVA PARA DISMINUIR ENTRADAS EN ATRASO</option>
+            <option value="CANALIDAD RECUPERACIONES">CANALIDAD RECUPERACIONES</option>
+          </select>
+        </div>
+        <div class="form-group col-md-4">
+          <label for="accion">Acción</label>
+          <select id="accion" class="form-control" [(ngModel)]="accion" name="accion" required>
+            <option value="" disabled selected>Selecciona una accion</option>
+            <option value="Fortalecer el plan de crecimiento según sector y foco">Fortalecer el plan de crecimiento según sector y foco</option>
+            <option value="Generar Bases Orientativas de Productos Foco">Generar Bases Orientativas de Productos Foco</option>
+          </select>
+        </div>
+      </div>
+
+      <div *ngFor="let subaccion of subacciones; let i = index" class="subaccion-group">
+        <div class="form-row">
+          <div class="form-group col-md-4">
+            <label for="subaccion-{{i}}">Subacción</label>
+            <input type="text" id="subaccion-{{i}}" class="form-control" [(ngModel)]="subaccion.subaccion" name="subaccion-{{i}}" required>
+          </div>
+          
+          <div class="form-group col-md-4">
+            <label for="area-{{i}}">Área</label>
+            <select type="text" id="area-{{i}}" class="form-control" [(ngModel)]="subaccion.area" name="area-{{i}}" required>
+                <option value="" disabled selected>Selecciona un area</option>
+                <option value="PM BEI">PM BEI</option>
+                <option value="PM Empresas Red">PM Empresas Red</option>
+            </select>
+          </div>
+          <div class="form-group col-md-4">
+            <label for="responsable-{{i}}">Responsable</label>
+            <input type="text" id="responsable-{{i}}" class="form-control" [(ngModel)]="subaccion.responsable" name="responsable-{{i}}" required>
+          </div>
+        </div>          
+        <div class="form-row">
+            <div class="form-group col-md-4">
+              <label for="inicio-{{i}}">Inicio</label>
+              <input type="date" id="inicio-{{i}}" class="form-control" [(ngModel)]="subaccion.inicio" name="inicio-{{i}}" required>
+            </div>
+            <div class="form-group col-md-4">
+              <label for="termino-{{i}}">Término</label>
+              <input type="date" id="termino-{{i}}" class="form-control" [(ngModel)]="subaccion.termino" name="termino-{{i}}" required>
+            </div>
+        </div>
+
+        <button type="button" class="btn btn-danger" (click)="removeSubaccion(i)">Eliminar Subacción</button>
+      </div>
+      <button type="button" class="btn btn-primary mt-3" (click)="addSubaccion()">Agregar Subacción</button>
+      <button type="submit" class="btn btn-success mt-3">Enviar</button>
+    </form>
+
+  </div>

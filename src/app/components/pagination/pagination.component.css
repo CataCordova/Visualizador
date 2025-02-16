@@ -1,0 +1,41 @@
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  button {
+    padding: 5px 10px;
+    cursor: pointer;
+  }
+  
+  button:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+  
+  .pagination .page-link {
+    color: #fff; /* Color del texto */
+    background-color: #6c757d; /* Color de fondo */
+    border: 1px solid #6c757d; /* Color del borde */
+  }
+  
+  .pagination .page-link:hover {
+    color: #fff; /* Color del texto al pasar el ratón */
+    background-color: #5a6268; /* Color de fondo al pasar el ratón */
+    border-color: #5a6268; /* Color del borde al pasar el ratón */
+  }
+  
+  .pagination .page-item.active .page-link {
+    color: #fff; /* Color del texto del elemento activo */
+    background-color: #fd0c04; /* Color de fondo del elemento activo */
+    border-color: #a12117; /* Color del borde del elemento activo */
+  }
+  
+  .pagination .page-item.disabled .page-link {
+    color: #6c757d; /* Color del texto del elemento deshabilitado */
+    background-color: #e9ecef; /* Color de fondo del elemento deshabilitado */
+    border-color: #dee2e6; /* Color del borde del elemento deshabilitado */
+  }
+  

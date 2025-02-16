@@ -1,0 +1,55 @@
+<div class="container">
+    <div class="row mb-3">
+      <div class="col-md-4">
+        <input type="text" class="form-control" placeholder="Buscar..." (input)="applyFilter($event)">
+      </div>
+      <div class="col-md-3"> 
+        <input type="date" class="form-control" [(ngModel)]="startDate" placeholder="Fecha de Inicio"> 
+      </div> <div class="col-md-3"> 
+        <input type="date" class="form-control" [(ngModel)]="endDate" placeholder="Fecha de Fin"> 
+      </div> <div class="col-md-2"> 
+        <button class="btn btn-primary w-100" (click)="filtrarPorFechas()">Filtrar</button>
+       </div>
+    <div class="col-md-2">
+      <app-export-excel [filteredSubaccion]="filteredSubaccion"></app-export-excel>  
+    </div>
+    </div>
+<div class="table-responsive"> 
+    <table class="table table-striped">
+        <thead>
+          <tr>
+            <th (click)="('vertical')">Vertical</th>
+            <th (click)="('accion')">Acción</th>
+            <th (click)="('subaccion')">Subacción</th>
+            <th (click)="('area')">Área</th>
+            <th (click)="('responsable')">Responsable</th>
+            <th (click)="('inicio')">Inicio</th>
+            <th (click)="('termino')">Término</th>
+            <th (click)="toggleStatusFilter()" data-bs-toggle="tooltip" title="Desplegar">
+              Estado
+              <div *ngIf="isStatusFilterOpen" class="dropdown">
+                <ul>
+                  <li (click)="filterByStatus('')">Todos</li>
+                  <li (click)="filterByStatus('approved')">Approved</li>
+                  <li (click)="filterByStatus('rejected')">Rejected</li>
+                  <li (click)="filterByStatus('pending')">Pending</li>
+                </ul>
+              </div>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let subaccion of subacciones">
+            <td>{{ subaccion.vertical }}</td>
+            <td>{{ subaccion.accion }}</td>
+            <td>{{ subaccion.subaccion }}</td>
+            <td>{{ subaccion.area }}</td>
+            <td>{{ subaccion.responsable }}</td>
+            <td>{{ subaccion.inicio }}</td>
+            <td>{{ subaccion.termino }}</td>
+            <td>{{ subaccion.estado }}</td>
+          </tr>
+        </tbody>
+      </table>
+</div>
+  </div>
